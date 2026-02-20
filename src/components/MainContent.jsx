@@ -42,42 +42,37 @@ export default function MainContent() {
   const displaySongs = songs.slice(0, 10);
 
   return (
-    <div className="main-wrapper w-100 px-3 px-md-5 py-4">
-      <section className="mb-5">
-        <h2 className="fw-bold text-white mb-2">Novità</h2>
-        <hr className="text-secondary mb-4" style={{ opacity: "0.2" }} />
-
-        <div className="row g-4">
-          {radioStations.map((station, i) => (
-            <div key={i} className="col-12 col-md-6">
-              <p className="text-uppercase x-small text-secondary mb-1 fw-bold">Nuova stazione radio</p>
-              <p className="text-light fs-5 mb-3 text-truncate">{station.title}</p>
-              <div className="ratio ratio-21x9">
-                <img src={station.img} alt="" className="img-fluid rounded-4 shadow-lg object-fit-cover" />
+    <div className="main-wrapper">
+      <div className="pb-3 pb-md-0">
+        <section className="mb-5">
+          <h2 className="fw-bold text-white mb-2">Novità</h2>
+          <hr className="text-secondary mb-4" style={{ opacity: "0.2" }} />
+          <div className="d-flex gap-4 overflow-auto pb-2 custom-scrollbar">
+            {radioStations.map((station, i) => (
+              <div key={i} className="flex-shrink-0" style={{ width: "85%", maxWidth: "550px" }}>
+                <p className="text-uppercase small text-secondary mb-1">Nuova stazione radio</p>
+                <p className="text-light fs-5 mb-3 text-truncate">{station.title}</p>
+                <img src={station.img} alt="" className="img-fluid rounded-4 shadow-lg" />
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      <section className="mb-5">
-        <div className="d-flex align-items-center mb-3">
-          <h4 className="fw-bold text-white m-0">Nuovi episodi radio</h4>
-          <i className="bi bi-chevron-right fs-6 text-secondary ms-2"></i>
-        </div>
+        <section className="mb-5">
+          <h4 className="fw-bold text-white mb-3">
+            Nuovi episodi radio <i className="bi bi-chevron-right fs-6 text-secondary"></i>
+          </h4>
+          <div className="d-flex gap-3 overflow-auto pb-3 custom-scrollbar">
+            {radioEpisodes.map((ep, i) => (
+              <div key={i} className="flex-shrink-0" style={{ width: "160px" }}>
+                <img src={ep.img} alt="" className="img-fluid rounded-3 mb-2 shadow-sm" />
+                <p className="m-0 text-white small fw-semibold text-truncate">{ep.title}</p>
+                <p className="m-0 text-secondary x-small text-truncate">{ep.sub}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="d-flex gap-4 overflow-auto pb-3 custom-scrollbar">
-          {radioEpisodes.map((ep, i) => (
-            <div key={i} className="flex-shrink-0" style={{ width: "190px" }}>
-              {" "}
-              <img src={ep.img} alt="" className="img-fluid rounded-3 mb-2 shadow-sm" />
-              <p className="m-0 text-white small fw-semibold text-truncate">{ep.title}</p>
-              <p className="m-0 text-secondary x-small text-truncate">{ep.sub}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <div>
         <section className="mb-5">
           <h4 className="fw-bold text-white mb-3">
             Nuove uscite <i className="bi bi-chevron-right fs-6 text-secondary"></i>
